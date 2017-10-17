@@ -22,4 +22,4 @@ College project using React Native. Cool stuff!
 - save favourite destinations / make a 'wishlist' of destinations / save visited destinations 
 - rate and comment about visited destination; rating and comments shall be public so they could help other users
 - display a map showing the route towards the destination (may be the user will be offered multiple choices for the road between the departure point and the destination, so he can choose the one he likes the most)
-- receive e-mails about top destinations and reminders for the user's upcoming travelling plans
+- receive e-mails, notifications about top destinations and reminders for the user's upcoming travelling plans
