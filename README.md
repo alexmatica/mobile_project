@@ -1,5 +1,6 @@
 # mobile_project
 Matica Florian-Alexandru, mfie1944@scs.ubbcluj.ro
+
 College project using React Native. Cool stuff!
 
 # PROJECT REQUIREMENTS:
