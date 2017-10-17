@@ -15,7 +15,7 @@ College project using React Native. Cool stuff!
 
 
 # MY IDEA
-  An application for people who enjoy travelling (like I do). The application will allow the user to keep track of all his/hers travelling destinations. Possible features (that I'm thinking of):
+  An application for people who enjoy travelling (like I do). The application will allow the user to keep track of all his/hers travelling destinations. Each user will have one account in order to be able to use the application. Possible features (that I'm thinking of):
 - see a list of possible destinations
 - a chart / graph of the most visited places with their number of visitors (in total, in one year, etc..)
 - it will give the user information about the costs of the trip
