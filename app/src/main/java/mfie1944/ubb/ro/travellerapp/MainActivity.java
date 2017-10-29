@@ -1,16 +1,12 @@
 package mfie1944.ubb.ro.travellerapp;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-
-    public static final String EXTRA_MESSAGE = "mfie1944.ubb.ro.travellerapp.LOL";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "There are no email clients installed!", Toast.LENGTH_SHORT).show();
         }
 
-
+        Intent intent = new Intent(this, BestDestinationsActivity.class);
+        startActivity(intent);
     }
 }

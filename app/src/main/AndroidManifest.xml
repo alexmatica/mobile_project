@@ -16,6 +16,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".BestDestinationsActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity android:name=".EditDestinationActivity"
+            android:parentActivityName=".BestDestinationsActivity"></activity>
     </application>
 
 </manifest>
