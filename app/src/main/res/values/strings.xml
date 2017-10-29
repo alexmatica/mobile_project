@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Traveller</string>
+    <string name="button_connect">Connect</string>
+    <string name="edit_email">Email...</string>
+</resources>
