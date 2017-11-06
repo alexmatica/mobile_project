@@ -1,4 +1,4 @@
-package mfie1944.ubb.ro.travellerapp;
+package mfie1944.ubb.ro.travellerapp.model;
 
 /**
  * Created by Alex on 10/29/2017.

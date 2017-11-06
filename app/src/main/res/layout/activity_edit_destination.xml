@@ -21,18 +21,17 @@
 
     <EditText
         android:id="@+id/descEdit"
-        android:layout_width="362dp"
-        android:layout_height="41dp"
+        android:layout_width="279dp"
+        android:layout_height="49dp"
         android:ems="10"
         android:fontFamily="casual"
         android:inputType="textPersonName"
         android:text="Name"
         android:textAlignment="center"
         android:textSize="14sp"
-        app:layout_constraintHorizontal_bias="0.489"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="121dp"
+        android:layout_marginTop="34dp"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <ImageView
@@ -43,7 +42,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
-        android:layout_marginTop="73dp"
+        android:layout_marginTop="38dp"
         app:layout_constraintTop_toBottomOf="@+id/nameTextView" />
 
     <Button
@@ -56,6 +55,8 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="26dp"
-        app:layout_constraintTop_toBottomOf="@+id/descEdit" />
+        android:layout_marginTop="0dp"
+        app:layout_constraintTop_toBottomOf="@+id/descEdit"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="0dp" />
 </android.support.constraint.ConstraintLayout>
