@@ -5,29 +5,29 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import mfie1944.ubb.ro.travellerapp.R;
-import mfie1944.ubb.ro.travellerapp.model.Destination;
+import mfie1944.ubb.ro.travellerapp.model.TravelDestination;
 
 /**
  * Created by Alex on 10/29/2017.
  */
 
-public class CustomAdapter extends ArrayAdapter<Destination> {
-    private ArrayList<Destination> myDestinations;
+public class CustomAdapter extends ArrayAdapter<TravelDestination> {
+    private List<TravelDestination> myDestinations;
     Context myContext;
 
     private static class ViewHolder {
         TextView nameView;
         TextView descView;
-        ImageView emojiRating;
+        RatingBar rating;
     }
 
-    public CustomAdapter(ArrayList<Destination> myDestinations, Context context){
+    public CustomAdapter(List<TravelDestination> myDestinations, Context context){
         super(context, R.layout.row_item, myDestinations);
         this.myDestinations = myDestinations;
         this.myContext = context;
@@ -35,7 +35,7 @@ public class CustomAdapter extends ArrayAdapter<Destination> {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent){
-        Destination destination = getItem(position);
+        TravelDestination destination = getItem(position);
 
         ViewHolder viewHolder;
         final View result;
@@ -46,7 +46,7 @@ public class CustomAdapter extends ArrayAdapter<Destination> {
             convertView = inflater.inflate(R.layout.row_item, parent, false);
             viewHolder.nameView = convertView.findViewById(R.id.destinationName);
             viewHolder.descView = convertView.findViewById(R.id.shortDesc);
-            viewHolder.emojiRating = convertView.findViewById(R.id.emojiRating);
+            viewHolder.rating = convertView.findViewById(R.id.ratingBar);
             result = convertView;
             convertView.setTag(viewHolder);
         } else{
@@ -55,8 +55,14 @@ public class CustomAdapter extends ArrayAdapter<Destination> {
         }
 
         viewHolder.nameView.setText(destination.getName());
-        viewHolder.descView.setText(destination.getshortDescription());
-        viewHolder.emojiRating.setImageResource(R.mipmap.ic_launcher);
+        viewHolder.descView.setText(destination.getDescription());
+        viewHolder.rating.setRating(destination.getRating()/2);
         return result;
+    }
+
+    public void updateDestinations(List<TravelDestination> newDestinations){
+        myDestinations.clear();
+        myDestinations.addAll(newDestinations);
+        this.notifyDataSetChanged();
     }
 }

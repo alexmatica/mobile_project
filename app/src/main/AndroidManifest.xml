@@ -19,8 +19,9 @@
         <activity
             android:name=".BestDestinationsActivity"
             android:parentActivityName=".MainActivity" />
-        <activity android:name=".EditDestinationActivity"
-            android:parentActivityName=".BestDestinationsActivity"></activity>
+        <activity
+            android:name=".EditDestinationActivity"
+            android:parentActivityName=".BestDestinationsActivity" />
     </application>
 
 </manifest>
