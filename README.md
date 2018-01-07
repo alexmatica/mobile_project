@@ -23,3 +23,11 @@ College project using React Native. Cool stuff!
 - rate and comment about visited destination; rating and comments shall be public so they could help other users
 - display a map showing the route towards the destination (may be the user will be offered multiple choices for the road between the departure point and the destination, so he can choose the one he likes the most)
 - receive e-mails, notifications about top destinations and reminders for the user's upcoming travelling plans
+
+
+
+Firebase integration update:
+Most of the requirements are solved by Firebase (online & offline support, syncing, CRUD, authentication, background work)
+Made a custom adapter which is sort of an Observer which takes the results from the background work of Firebase and updates the UI items container
+Notifications don't work - idk why - everything is implemented, but they just don't reach my device
+Not sure about some of the requirements, since they are not covered manually by me but they are covered by Firebase.

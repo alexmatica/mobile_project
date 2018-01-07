@@ -3,36 +3,26 @@ package mfie1944.ubb.ro.travellerapp;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
-import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RatingBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.PieChart;
-import com.github.mikephil.charting.data.BarData;
-import com.github.mikephil.charting.data.BarDataSet;
-import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import mfie1944.ubb.ro.travellerapp.model.TravelDestination;
-import mfie1944.ubb.ro.travellerapp.utils.CustomAdapter;
 
 public class EditDestinationActivity extends AppCompatActivity {
 
     int posInList;
-    AppDatabase appDatabase;
     String CU;
     int editId;
 
@@ -54,7 +44,6 @@ public class EditDestinationActivity extends AppCompatActivity {
             String destDesc = intent.getStringExtra(BestDestinationsActivity.D_DESC);
             int destRating = intent.getIntExtra(BestDestinationsActivity.D_RATING,0);
             String destPhoto = intent.getStringExtra(BestDestinationsActivity.D_PHOTO);
-            this.posInList = intent.getIntExtra("posInList", 0);
 
             nameEditText.setText(destName);
             descEditText.setText(destDesc);
@@ -97,37 +86,32 @@ public class EditDestinationActivity extends AppCompatActivity {
     }
 
     @SuppressLint("StaticFieldLeak")
-    public void onClick(View view){
+    public void onClickSave(View view){
 
         EditText nameEditText = findViewById(R.id.nameEditText);
         EditText descEditText = findViewById(R.id.descEdit);
         RatingBar ratingBar = findViewById(R.id.destRating);
 
-        new AsyncTask<Void, Void, Void>(){
+        if (nameEditText.getText().length() > 0 && descEditText.getText().length() > 0){
+            TravelDestination td = new TravelDestination();
+            td.setName(nameEditText.getText().toString());
+            td.setDescription(descEditText.getText().toString());
+            td.setRating((int) (ratingBar.getRating() * 2));
+            td.setPhotoLink("");
+            td.setUniqueEmail(MainActivity.getFirebaseAuthInstance().getCurrentUser().getEmail());
 
-            @Override
-            protected Void doInBackground(Void... voids) {
-                appDatabase = AppDatabase.getInstance(getApplicationContext());
-                TravelDestination td = new TravelDestination(nameEditText.getText().toString(),
-                        descEditText.getText().toString(),
-                        (int)ratingBar.getRating() * 2,
-                        "whatever.png");
-                if (CU.equals(BestDestinationsActivity.KEY_UPDATE)){
-                    td.setId(editId);
-                    appDatabase.travelDestinationDao().update(td);
-                } else if(CU.equals(BestDestinationsActivity.KEY_CREATE)){
-                    appDatabase.travelDestinationDao().insertOne(td);
-                }
-                return null;
-            }
+            if (CU.equals(BestDestinationsActivity.KEY_CREATE))
+                BestDestinationsActivity.repository.addDestination(td);
+            else
+                BestDestinationsActivity.repository.updateDestination(editId, td);
 
-            @Override
-            protected void onPostExecute(Void aVoid){
-                Intent intent = new Intent();
-                setResult(RESULT_OK, intent);
-                finish();
-            }
-        }.execute();
+            Intent done = new Intent();
+            setResult(RESULT_OK, done);
+            finish();
+        } else{
+            nameEditText.setError("Required");
+            descEditText.setError("Required");
+        }
     }
 
 }

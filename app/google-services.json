@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "381140672776",
+    "firebase_url": "https://mobileproject-ecd65.firebaseio.com",
+    "project_id": "mobileproject-ecd65",
+    "storage_bucket": "mobileproject-ecd65.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:381140672776:android:03e717a1f543d7e3",
+        "android_client_info": {
+          "package_name": "mfie1944.ubb.ro.travellerapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "381140672776-j7n6539fao62i5gnu4pg2gjllg7mt23d.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "mfie1944.ubb.ro.travellerapp",
+            "certificate_hash": "be5c02456abf933ab9fcc675fa101f540810018a"
+          }
+        },
+        {
+          "client_id": "381140672776-44pg2mrg11l282dgjoha1dgnp2t5ucg6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0ArfXa14BpqACOc_ExDSgKE4WJujRrjE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "381140672776-44pg2mrg11l282dgjoha1dgnp2t5ucg6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
