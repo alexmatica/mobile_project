@@ -1,7 +1,7 @@
 # mobile_project
 Matica Florian-Alexandru, mfie1944@scs.ubbcluj.ro
 
-College project using React Native. Cool stuff!
+College project using Android. Cool stuff!
 
 # PROJECT REQUIREMENTS:
 - an input form,
