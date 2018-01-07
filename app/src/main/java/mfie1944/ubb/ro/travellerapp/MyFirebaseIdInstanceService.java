@@ -1,4 +1,4 @@
-package mfie1944.ubb.ro.travellerapp.utils;
+package mfie1944.ubb.ro.travellerapp;
 
 import android.util.Log;
 
