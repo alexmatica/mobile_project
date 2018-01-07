@@ -27,6 +27,7 @@ import java.util.List;
 import mfie1944.ubb.ro.travellerapp.model.TravelDestination;
 import mfie1944.ubb.ro.travellerapp.repository.TravelDestinationsRepository;
 import mfie1944.ubb.ro.travellerapp.utils.DestinationAdapter;
+import mfie1944.ubb.ro.travellerapp.utils.MyDatabase;
 
 
 public class BestDestinationsActivity extends AppCompatActivity implements DestinationAdapter.OnItemClickListener, DestinationAdapter.OnItemLongClickListener {
@@ -44,6 +45,7 @@ public class BestDestinationsActivity extends AppCompatActivity implements Desti
     RecyclerView mRecyclerView;
     RecyclerView.Adapter mRecyclerAdapter;
     RecyclerView.LayoutManager mRecyclerManager;
+    FirebaseDatabase firebaseDatabase;
     DatabaseReference mDatabase;
 
     @SuppressLint("StaticFieldLeak")
@@ -52,11 +54,9 @@ public class BestDestinationsActivity extends AppCompatActivity implements Desti
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_best_destinations);
 
-        mDatabase = FirebaseDatabase.getInstance()
-                .getReference("traveller");
-        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
+        firebaseDatabase = MyDatabase.getDatabase();
+        mDatabase = firebaseDatabase.getReference("traveller");
         mDatabase.keepSynced(true);
-
         repository = new TravelDestinationsRepository();
 
         mDatabase.addValueEventListener(new ValueEventListener() {
