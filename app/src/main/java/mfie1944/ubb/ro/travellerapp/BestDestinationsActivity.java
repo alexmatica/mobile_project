@@ -45,7 +45,6 @@ public class BestDestinationsActivity extends AppCompatActivity implements Desti
     RecyclerView mRecyclerView;
     RecyclerView.Adapter mRecyclerAdapter;
     RecyclerView.LayoutManager mRecyclerManager;
-    FirebaseDatabase firebaseDatabase;
     DatabaseReference mDatabase;
 
     @SuppressLint("StaticFieldLeak")
@@ -54,9 +53,9 @@ public class BestDestinationsActivity extends AppCompatActivity implements Desti
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_best_destinations);
 
-        firebaseDatabase = MyDatabase.getDatabase();
-        mDatabase = firebaseDatabase.getReference("traveller");
+        mDatabase = MyDatabase.getDatabase().getReference("traveller");
         mDatabase.keepSynced(true);
+
         repository = new TravelDestinationsRepository();
 
         mDatabase.addValueEventListener(new ValueEventListener() {
@@ -107,7 +106,7 @@ public class BestDestinationsActivity extends AppCompatActivity implements Desti
     public void onItemClick(int id) {
         if ( !MainActivity.getFirebaseAuthInstance().getCurrentUser().isAnonymous() &&
                 repository.getDestination(id).getUniqueEmail().equals(
-                MainActivity.getFirebaseAuthInstance().getCurrentUser().getEmail())) {
+                        MainActivity.getFirebaseAuthInstance().getCurrentUser().getEmail())) {
             Intent intent = new Intent(this, EditDestinationActivity.class);
             intent.putExtra("CU", KEY_UPDATE);
             intent.putExtra(D_ID, id);
